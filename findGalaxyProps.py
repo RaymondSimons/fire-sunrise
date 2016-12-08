@@ -369,13 +369,7 @@ if __name__ == "__main__":
     stars_data = []
     new_snapfiles = []
 
-    ts = yt.DatasetSeries(new_snapfiles)
 
-    for ds,snap_dir in zip(reversed(ts),np.flipud(new_snapfiles)):
-            print "Getting galaxy props: ", ds._file_amr, snap_dir
-
-    print 'check'
-    '''
     for sn in snaps:
     		aname = sn.split('_')[-1].rstrip('.d')
     		particle_headers.append('PMcrd'+aname+'.DAT')
@@ -414,7 +408,7 @@ if __name__ == "__main__":
     for ds,snap_dir in zip(reversed(ts),np.flipud(new_snapfiles)):
     		print "Getting galaxy props: ", ds._file_amr, snap_dir
 
-
+    '''
     dd = ds.all_data()
     ds.domain_right_edge = ds.arr(ds.domain_right_edge,'code_length')
     ds.domain_left_edge  = ds.arr(ds.domain_left_edge,'code_length')
