@@ -390,7 +390,8 @@ if __name__ == "__main__":
             os.symlink(os.path.abspath(particle_data[-1]),os.path.join(snap_dir,particle_data[-1]))
             os.symlink(os.path.abspath(stars_data[-1]),os.path.join(snap_dir,stars_data[-1]))
 
-    for ds,snap_dir in zip(reversed(ts),np.flipud(new_snapfiles)):
+    ts = yt.DatasetSeries(snaps)
+    for ds,snap_dir in zip(reversed(ts),np.flipud(snaps)):
         print 'test'        
     #galaxy_props = find_galaxyprops(galaxy_props, ds, hc_sphere, max_ndens_arr)
 
