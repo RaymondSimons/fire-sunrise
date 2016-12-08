@@ -369,29 +369,28 @@ if __name__ == "__main__":
     stars_data = []
     new_snapfiles = []
 
-
     for sn in snaps:
-    		aname = sn.split('_')[-1].rstrip('.d')
-    		particle_headers.append('PMcrd'+aname+'.DAT')
-    		particle_data.append('PMcrs0'+aname+'.DAT')
-    		stars_data.append('stars_'+aname+'.dat')
-    		snap_dir = os.path.join(simname+'_'+aname+'_sunrise')
-    		yt_fig_dir = snap_dir+'/yt_projections'
-    		print "Sunrise directory: ", snap_dir
-    		if not os.path.lexists(snap_dir):
-    			os.mkdir(snap_dir)        
-    		if not os.path.lexists(yt_fig_dir):
-    			os.mkdir(yt_fig_dir)        
+        aname = sn.split('_')[-1].rstrip('.d')
+        particle_headers.append('PMcrd'+aname+'.DAT')
+        particle_data.append('PMcrs0'+aname+'.DAT')
+        stars_data.append('stars_'+aname+'.dat')
+        snap_dir = os.path.join(simname+'_'+aname+'_sunrise')
+        yt_fig_dir = snap_dir+'/yt_projections'
+        print "Sunrise directory: ", snap_dir
+        if not os.path.lexists(snap_dir):
+            os.mkdir(snap_dir)        
+        if not os.path.lexists(yt_fig_dir):
+            os.mkdir(yt_fig_dir)        
 
-    		newf = os.path.join(snap_dir,sn)
-    		new_snapfiles.append(newf)
-    		if not os.path.lexists(newf):
-    				os.symlink(os.path.abspath(sn),newf)
-    				os.symlink(os.path.abspath(particle_headers[-1]),os.path.join(snap_dir,particle_headers[-1]))
-    				os.symlink(os.path.abspath(particle_data[-1]),os.path.join(snap_dir,particle_data[-1]))
-    				os.symlink(os.path.abspath(stars_data[-1]),os.path.join(snap_dir,stars_data[-1]))
+        newf = os.path.join(snap_dir,sn)
+        new_snapfiles.append(newf)
+        if not os.path.lexists(newf):
+            os.symlink(os.path.abspath(sn),newf)
+            os.symlink(os.path.abspath(particle_headers[-1]),os.path.join(snap_dir,particle_headers[-1]))
+            os.symlink(os.path.abspath(particle_data[-1]),os.path.join(snap_dir,particle_data[-1]))
+            os.symlink(os.path.abspath(stars_data[-1]),os.path.join(snap_dir,stars_data[-1]))
 
-
+    '''
     new_snapfiles = np.asarray(new_snapfiles)
     galaxy_props = {}
     fields = ['scale', 'stars_total_mass', 'stars_com', 'stars_maxdens', 'stars_maxndens', 'stars_hist_center',
@@ -408,7 +407,7 @@ if __name__ == "__main__":
     for ds,snap_dir in zip(reversed(ts),np.flipud(new_snapfiles)):
     		print "Getting galaxy props: ", ds._file_amr, snap_dir
 
-    '''
+
     dd = ds.all_data()
     ds.domain_right_edge = ds.arr(ds.domain_right_edge,'code_length')
     ds.domain_left_edge  = ds.arr(ds.domain_left_edge,'code_length')
