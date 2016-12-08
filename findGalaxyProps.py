@@ -22,9 +22,9 @@ def find_center(dd, ds, units = 'kpc', cen_pos = 10.e3, bin_width = 4.e3, del_po
 	returns ndarray of max_ndens_arr = ([cenx, ceny, cenz])
 	'''
 	units = 'kpc' 
-	stars_pos_x = dd['stars', 'particle_position_x'].in_units(units)
-	stars_pos_y = dd['stars', 'particle_position_y'].in_units(units)
-	stars_pos_z = dd['stars', 'particle_position_z'].in_units(units)
+	stars_pos_x = dd['PartType4', 'Coordinates'][0].in_units(units)
+	stars_pos_y = dd['PartType4', 'Coordinates'][1].in_units(units)
+	stars_pos_z = dd['PartType4', 'Coordinates'][2].in_units(units)
 
 	star_pos = [stars_pos_x.value, stars_pos_y.value, stars_pos_z.value]
 
@@ -403,6 +403,12 @@ if __name__ == "__main__":
         except AttributeError,AssertionError:
             print "No star particles found, skipping: ", ds._file_amr
             continue
+
+        print 'Determining center...'
+        max_ndens_arr = find_center(dd, ds, cen_pos = ds.domain_center.in_units('kpc')[0].value[()], units = 'kpc')
+        print '\tCenter = ', max_ndens_arr
+
+
 
         #galaxy_props = find_galaxyprops(galaxy_props, ds, hc_sphere, max_ndens_arr)
 
