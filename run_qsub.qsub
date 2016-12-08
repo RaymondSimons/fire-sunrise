@@ -1,0 +1,12 @@
+#!/bin/bash
+#PBS -S /bin/bash
+#PBS -l select=1:ncpus=16:native
+#PBS -l walltime=01:00:00
+#PBS -q devel
+#PBS -N find_props
+#PBS -M rsimons@jhu.edu
+#PBS -m abe
+#PBS -o find_gal_props.out
+#PBS -e find_gal_props.err
+#PBS -V
+python /home/rsimons/scripts/fire-sunrise/findGalaxyProps.py
