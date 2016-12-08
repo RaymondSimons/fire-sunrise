@@ -408,7 +408,8 @@ if __name__ == "__main__":
         max_ndens_arr = find_center(dd, ds, cen_pos = ds.domain_center.in_units('kpc')[0].value[()], units = 'kpc')
         print '\tCenter = ', max_ndens_arr
 
-
+    p = yt.ProjectionPlot(ds, 'z', ('gas', 'density'), center=(max_ndens_arr), width = (8.,'kpc'))
+    p.save('../figures/projection_z.png')
 
         #galaxy_props = find_galaxyprops(galaxy_props, ds, hc_sphere, max_ndens_arr)
 
