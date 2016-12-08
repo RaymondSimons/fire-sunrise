@@ -354,7 +354,6 @@ if __name__ == "__main__":
     else:
     	snaps = np.sort(np.asarray(glob.glob("*.0.hdf5")))
 
-    '''
 
     print "Calculating Galaxy Props for: ", snaps
 
@@ -369,6 +368,7 @@ if __name__ == "__main__":
     particle_data = []
     stars_data = []
     new_snapfiles = []
+    '''
     for sn in snaps:
     		aname = sn.split('_')[-1].rstrip('.d')
     		particle_headers.append('PMcrd'+aname+'.DAT')
