@@ -368,6 +368,13 @@ if __name__ == "__main__":
     particle_data = []
     stars_data = []
     new_snapfiles = []
+
+    ts = yt.DatasetSeries(new_snapfiles)
+
+    for ds,snap_dir in zip(reversed(ts),np.flipud(new_snapfiles)):
+            print "Getting galaxy props: ", ds._file_amr, snap_dir
+
+
     '''
     for sn in snaps:
     		aname = sn.split('_')[-1].rstrip('.d')
