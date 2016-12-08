@@ -374,7 +374,7 @@ if __name__ == "__main__":
     for ds,snap_dir in zip(reversed(ts),np.flipud(new_snapfiles)):
             print "Getting galaxy props: ", ds._file_amr, snap_dir
 
-
+    print 'check'
     '''
     for sn in snaps:
     		aname = sn.split('_')[-1].rstrip('.d')
