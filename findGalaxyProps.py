@@ -398,7 +398,7 @@ if __name__ == "__main__":
         print ds.index.get_smallest_dx()
         #need to exit gracefully here if there's no stars.
         try:
-            stars_pos_x = dd['stars', 'particle_position_x'].in_units('kpc')
+            stars_pos_x = dd['PartType4', 'Coordinates'].in_units('kpc')
             assert stars_pos_x.shape > 5
         except AttributeError,AssertionError:
             print "No star particles found, skipping: ", ds._file_amr
