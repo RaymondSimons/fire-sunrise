@@ -392,8 +392,11 @@ if __name__ == "__main__":
 
     ts = yt.DatasetSeries(snaps)
     for ds,snap_dir in zip(reversed(ts),np.flipud(snaps)):
-        print 'test'        
-    #galaxy_props = find_galaxyprops(galaxy_props, ds, hc_sphere, max_ndens_arr)
+        dd = ds.all_data()
+        ds.domain_right_edge = ds.arr(ds.domain_right_edge,'code_length')
+        ds.domain_left_edge  = ds.arr(ds.domain_left_edge,'code_length')
+        print ds.index.get_smallest_dx()
+        #galaxy_props = find_galaxyprops(galaxy_props, ds, hc_sphere, max_ndens_arr)
 
 
     '''
